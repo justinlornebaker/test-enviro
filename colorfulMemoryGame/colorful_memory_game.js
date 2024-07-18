@@ -70,4 +70,20 @@ const timerElement = document.getElementById('timer');
             gameContainer.addEventListener('click', handleCardClick);
         }
 
+
+    function startGameTimer(timeLeft) {
+            timerElement.textContent = `Time Left: ${timeLeft}`;
+            gameInterval = setInterval(() => {
+                timeLeft--;
+                timerElement.textContent = `Time Left: ${timeLeft}`;
+
+                if (timeLeft === 0) {
+                    clearInterval(gameInterval);
+                    let timeLeft = 30;
+                    alert('Game Over!');
+                    startbtn.disabled = false;
+                }
+            }, 1000);
+        }
+        
     startbtn.addEventListener('click', startGame);
